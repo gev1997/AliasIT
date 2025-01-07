@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        
+
         setContent {
             AliasITTheme {
                 val navHostController = rememberNavController()
@@ -31,20 +31,4 @@ class MainActivity : ComponentActivity() {
     }
 
     private lateinit var mNavController: NavController
-}
-
-@Composable
-fun MainActivity.HomePage() {
-}
-
-@Composable
-fun MainActivity.TeamsPage() {
-}
-
-@Composable
-fun MainActivity.GamePage() {
-}
-
-@Composable
-fun MainActivity.OptionsPage() {
 }
