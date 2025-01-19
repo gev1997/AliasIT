@@ -2,8 +2,8 @@ package com.aliasit
 
 import androidx.navigation.NavHostController
 
-class NavController(navHostController: NavHostController) {
-    private val mNavHostController = navHostController
+class NavController(private val mNavHostController: NavHostController) {
+    fun getNavHostController() = mNavHostController
 
     fun getNavigator(route: String): () -> Unit {
         when (route) {

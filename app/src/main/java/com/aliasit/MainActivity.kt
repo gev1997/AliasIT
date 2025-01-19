@@ -16,10 +16,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AliasITTheme {
-                val navHostController = rememberNavController()
-                mNavController = NavController(navHostController)
+                mNavController = NavController(rememberNavController())
 
-                NavHost(navHostController, "Home") {
+                NavHost(mNavController.getNavHostController(), "Home") {
                     composable("Home") { HomePage() }
                     composable("Teams") { TeamsPage() }
                     composable("Game") { GamePage() }
