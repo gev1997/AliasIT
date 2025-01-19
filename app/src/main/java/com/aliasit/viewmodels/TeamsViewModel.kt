@@ -6,12 +6,16 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
-data class Team(val index: Int) {
-    companion object {
-        fun playersMaxCount(): Int { return 4 }
-        fun playersMinCount(): Int { return 2 }
-    }
+fun playersMinCount(): Int { return 2 }
+fun playersMaxCount(): Int { return 4 }
+fun teamsMinCount(): Int { return 2 }
+fun teamsMaxCount(): Int { return 3 }
+
+class Player(private val playerIndex: Int) {
+    fun getIndex() = playerIndex
 
     fun getName() = mName
 
@@ -21,33 +25,36 @@ data class Team(val index: Int) {
         mName = name
     }
 
-    fun getPlayerName(index: Int): String {
-        assert(index < getPlayersCount())
+    private var mName by mutableStateOf("Player $playerIndex")
+}
 
-        return mPlayers[index]
+class Team(private val teamIndex: Int) {
+    fun getIndex() = teamIndex
+
+    fun getName() = mName
+
+    fun setName(name: String) {
+        assert(name.isNotEmpty())
+
+        mName = name
     }
 
-    fun setPlayerName(index: Int, playerName: String) {
+    fun getPlayersCount() = mPlayersList.count()
+
+    fun getPlayer(index: Int): Player {
         assert(index < getPlayersCount())
-        assert(playerName.isNotEmpty())
 
-        mPlayers[index] = playerName
+        return mPlayersList[index]
     }
-
-    fun getPlayersCount() = mPlayers.count()
 
     fun addPlayer() {
-        val playersCount = getPlayersCount()
-
-        if (playersCount < playersMaxCount())
-            mPlayers.add("Player ${playersCount + 1}")
+        if (getPlayersCount() < playersMaxCount())
+            mPlayersList.add(Player(getPlayersCount() + 1))
     }
 
-    fun removePlayer() {
-        val playersCount = getPlayersCount()
-
-        if (playersCount > playersMinCount())
-            mPlayers.removeAt(playersCount - 1)
+    fun removePlayer(index: Int) {
+        if (getPlayersCount() > playersMinCount())
+            mPlayersList.removeAt(index)
     }
 
     fun getScore() = mScore
@@ -62,19 +69,26 @@ data class Team(val index: Int) {
 
     fun dropScore() { mScore = 0 }
 
-    private var mName by mutableStateOf("Team $index")
-    private var mPlayers = mutableStateListOf("Player 1", "Player 2")
+    private var mName by mutableStateOf("Team $teamIndex")
+    private val mPlayersList = mutableStateListOf(Player(1), Player(2))
     private var mScore by mutableIntStateOf(0)
 }
 
-class TeamsViewModel : ViewModel() {
+class Teams {
     fun getTeam(index: Int): Team {
-        assert(index < getTeamsCount())
+        assert(index < getCount())
 
-        return mTeams[index]
+        return mTeamsList[index]
     }
 
-    fun getTeamsCount() = mTeams.count()
+    fun getCount() = mTeamsList.count()
 
-    private var mTeams = mutableStateListOf(Team(1), Team(2))
+    private val mTeamsList = MutableList(teamsMinCount()) { index -> Team(index + 1) }
+}
+
+class TeamsViewModel : ViewModel() {
+    fun getStateFlow() = mStateFlow
+
+    private val mMutableStateFlow = MutableStateFlow(Teams())
+    private val mStateFlow = mMutableStateFlow.asStateFlow()
 }
