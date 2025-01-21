@@ -1,4 +1,4 @@
-package com.aliasit
+package com.aliasit.ui
 
 import androidx.navigation.NavHostController
 

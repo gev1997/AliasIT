@@ -1,4 +1,4 @@
-package com.aliasit
+package com.aliasit.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

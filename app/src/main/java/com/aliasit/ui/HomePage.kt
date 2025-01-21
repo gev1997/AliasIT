@@ -1,4 +1,4 @@
-package com.aliasit
+package com.aliasit.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,14 +16,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun MainActivity.TeamsPage() {
+fun MainActivity.HomePage() {
     Scaffold { padding ->
-        Column(Modifier.fillMaxSize().padding(padding), Arrangement.Top, Alignment.CenterHorizontally) {
-            Text("Teams", fontSize = 58.sp)
+        Column(Modifier.fillMaxSize().padding(padding), Arrangement.Top, Alignment.End) {
+            Button(getNavController().getNavigator("Options"), Modifier.size(60.dp, 60.dp)) {
+                Text("*", fontSize = 32.sp)
+            }
+        }
+        Column(Modifier.fillMaxSize().padding(padding), Arrangement.Center, Alignment.CenterHorizontally) {
+            Text("Alias IT", fontSize = 58.sp)
+            Spacer(Modifier.size(250.dp))
         }
         Column(Modifier.fillMaxSize().padding(padding), Arrangement.Bottom, Alignment.CenterHorizontally) {
-            Button(getNavController().getNavigator("Game"), Modifier.size(250.dp, 60.dp)) {
-                Text("Start", fontSize = 22.sp)
+            Button(getNavController().getNavigator("Teams"), Modifier.size(250.dp, 60.dp)) {
+                Text("Play", fontSize = 22.sp)
             }
             Spacer(Modifier.size(20.dp))
         }

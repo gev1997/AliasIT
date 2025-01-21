@@ -1,4 +1,4 @@
-package com.aliasit
+package com.aliasit.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
