@@ -1,12 +1,21 @@
 package com.aliasit.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,20 +27,38 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun MainActivity.HomePage() {
     Scaffold { padding ->
-        Column(Modifier.fillMaxSize().padding(padding), Arrangement.Top, Alignment.End) {
-            Button(getNavController().getNavigator("Options"), Modifier.size(60.dp, 60.dp)) {
-                Text("*", fontSize = 32.sp)
+        BoxWithConstraints {
+            val mainContentColumnWidth = maxWidth * 0.9f
+
+            // Main Column
+            Column(Modifier.fillMaxSize().background(backgroundColor).padding(padding), horizontalAlignment = Alignment.CenterHorizontally) {
+                // Main content Column
+                Column(Modifier.fillMaxHeight().width(mainContentColumnWidth), Arrangement.SpaceBetween) {
+                    // Options Column
+                    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.Start) {
+                        Button(getNavController().getNavigator("Options"), Modifier.size(100.dp, 100.dp), colors = ButtonDefaults.buttonColors(backgroundColor)) {
+                            Icon(Icons.Default.Settings, contentDescription = null, Modifier.fillMaxSize(), tint = textColor)
+                        }
+                    }
+
+                    // Title Column
+                    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("Alias IT", color = textColor, fontSize = 60.sp)
+                    }
+
+                    Spacer(Modifier.size(0.dp))
+                    Spacer(Modifier.size(0.dp))
+
+                    // Play Column
+                    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                        Button(getNavController().getNavigator("Teams"), Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
+                            Text("Play", color = textColor, fontSize = 28.sp)
+                        }
+
+                        Spacer(Modifier.size(10.dp))
+                    }
+                }
             }
-        }
-        Column(Modifier.fillMaxSize().padding(padding), Arrangement.Center, Alignment.CenterHorizontally) {
-            Text("Alias IT", fontSize = 58.sp)
-            Spacer(Modifier.size(250.dp))
-        }
-        Column(Modifier.fillMaxSize().padding(padding), Arrangement.Bottom, Alignment.CenterHorizontally) {
-            Button(getNavController().getNavigator("Teams"), Modifier.size(250.dp, 60.dp)) {
-                Text("Play", fontSize = 22.sp)
-            }
-            Spacer(Modifier.size(20.dp))
         }
     }
 }
