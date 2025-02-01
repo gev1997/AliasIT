@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aliasit.data.playersMaxCount
 import com.aliasit.data.playersMinCount
+import com.aliasit.data.teamsMaxCount
+import com.aliasit.data.teamsMinCount
 
 @Composable
 fun MainActivity.TeamsPage() {
@@ -56,8 +58,15 @@ fun MainActivity.TeamsPage() {
 
                             // Team Column
                             Column(Modifier.fillMaxWidth()) {
-                                Button({ team.setName("New Team name") }, Modifier.width(teamTitleWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
-                                    Text(team.getName(), color = textColor, fontSize = 32.sp)
+                                Row {
+                                    Button({ team.setName("New Team name") }, Modifier.width(teamTitleWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
+                                        Text(team.getName(), color = textColor, fontSize = 32.sp)
+                                    }
+                                    if (teams.getCount() > teamsMinCount()) {
+                                        Button({ teams.removeTeam(teamIndex) }, colors = ButtonDefaults.buttonColors(backgroundColor)) {
+                                            Icon(Icons.Default.Clear, contentDescription = null, tint = textColor)
+                                        }
+                                    }
                                 }
 
                                 Spacer(Modifier.size(4.dp))
@@ -88,7 +97,18 @@ fun MainActivity.TeamsPage() {
                                 }
                             }
                         }
+                        
+                        if (teams.getCount() < teamsMaxCount()) {
+                            Button({ teams.addTeam() }, Modifier.width(teamPlayerWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
+                                Text("Add Team", color = textColor, fontSize = 28.sp)
+                            }
+                        }
+
+                        Spacer(Modifier.size(20.dp))
                     }
+
+                    Spacer(Modifier.size(0.dp))
+                    Spacer(Modifier.size(0.dp))
 
                     // Play Column
                     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
