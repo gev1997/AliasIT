@@ -5,12 +5,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -25,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aliasit.data.playersMaxCount
 import com.aliasit.data.playersMinCount
@@ -73,7 +70,7 @@ fun MainActivity.TeamsPage() {
                                     }
                                 }
 
-                                Spacer(Modifier.size(4.dp))
+                                Utility.Spacer(4)
 
                                 for (playerIndex in 0..<team.getPlayersCount()) {
                                     val player = team.getPlayer(playerIndex)
@@ -92,7 +89,7 @@ fun MainActivity.TeamsPage() {
                                         }
                                     }
 
-                                    Spacer(Modifier.size(4.dp))
+                                    Utility.Spacer(4)
                                 }
 
                                 if (team.getPlayersCount() < playersMaxCount()) {
@@ -100,22 +97,21 @@ fun MainActivity.TeamsPage() {
                                         Text("Add Player", color = textColor, fontSize = 28.sp)
                                     }
 
-                                    Spacer(Modifier.size(4.dp))
+                                    Utility.Spacer(4)
                                 }
                             }
                         }
-                        
+
                         if (teams.getCount() < teamsMaxCount()) {
                             Button({ teams.addTeam() }, Modifier.width(teamPlayerWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
                                 Text("Add Team", color = textColor, fontSize = 28.sp)
                             }
                         }
 
-                        Spacer(Modifier.size(20.dp))
+                        Utility.Spacer(20)
                     }
 
-                    Spacer(Modifier.size(0.dp))
-                    Spacer(Modifier.size(0.dp))
+                    Utility.Spacer(0, 2)
 
                     // Play Column
                     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -123,7 +119,7 @@ fun MainActivity.TeamsPage() {
                             Text("Let's Go", color = textColor, fontSize = 28.sp)
                         }
 
-                        Spacer(Modifier.size(10.dp))
+                        Utility.Spacer(10)
                     }
                 }
             }

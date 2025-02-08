@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,8 +45,7 @@ fun MainActivity.HomePage() {
                         Text("Alias IT", color = textColor, fontSize = 60.sp)
                     }
 
-                    Spacer(Modifier.size(0.dp))
-                    Spacer(Modifier.size(0.dp))
+                    Utility.Spacer(0, 2)
 
                     // Play Column
                     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -55,7 +53,7 @@ fun MainActivity.HomePage() {
                             Text("Play", color = textColor, fontSize = 28.sp)
                         }
 
-                        Spacer(Modifier.size(10.dp))
+                        Utility.Spacer(10)
                     }
                 }
             }
