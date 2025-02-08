@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.aliasit.ui.theme.AliasITTheme
 import com.aliasit.viewmodels.TeamsViewModel
+import com.aliasit.viewmodels.TimeAndScoreViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AliasITTheme {
                 mTeamsViewModel = viewModel()
+                mTimeAndScoreViewModel = viewModel()
                 mNavController = NavController(rememberNavController())
 
                 NavHost(mNavController.getNavHostController(), "Home") {
@@ -41,4 +43,5 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var mNavController: NavController
     private lateinit var mTeamsViewModel: TeamsViewModel
+    private lateinit var mTimeAndScoreViewModel: TimeAndScoreViewModel
 }

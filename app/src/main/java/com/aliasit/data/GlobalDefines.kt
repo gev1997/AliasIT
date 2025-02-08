@@ -4,11 +4,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
-// TODO:
+// TODO: make it with inteval {min, max}
 fun playersMinCount(): Int { return 2 }
 fun playersMaxCount(): Int { return 4 }
 fun teamsMinCount(): Int { return 2 }
 fun teamsMaxCount(): Int { return 3 }
+fun roundMinTime(): Int { return 30 }
+fun roundMaxTime(): Int { return 90 }
+fun winScroeMinCount(): Int { return 20 }
+fun winScroeMaxCount(): Int { return 80 }
 
 // TODO: read/write in file
 var mCppWords by mutableStateOf(mapOf(
