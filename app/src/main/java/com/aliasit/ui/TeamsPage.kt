@@ -31,6 +31,7 @@ import com.aliasit.data.playersMaxCount
 import com.aliasit.data.playersMinCount
 import com.aliasit.data.teamsMaxCount
 import com.aliasit.data.teamsMinCount
+import com.aliasit.ui.dialog.RenameDialog
 
 @Composable
 fun MainActivity.TeamsPage() {
@@ -59,7 +60,10 @@ fun MainActivity.TeamsPage() {
                             // Team Column
                             Column(Modifier.fillMaxWidth()) {
                                 Row {
-                                    Button({ team.setName("New Team name") }, Modifier.width(teamTitleWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
+                                    val renameDialog = RenameDialog("Team")
+                                    renameDialog.Init(team.getName(), { name -> if (name.isNotEmpty()) team.setName(name) })
+
+                                    Button({ renameDialog.show() }, Modifier.width(teamTitleWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
                                         Text(team.getName(), color = textColor, fontSize = 32.sp)
                                     }
                                     if (teams.getCount() > teamsMinCount()) {
@@ -75,7 +79,10 @@ fun MainActivity.TeamsPage() {
                                     val player = team.getPlayer(playerIndex)
 
                                     Row {
-                                        Button({ player.setName("New name") }, Modifier.width(teamPlayerWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
+                                        val renameDialog = RenameDialog("Player")
+                                        renameDialog.Init(player.getName(), { name -> if (name.isNotEmpty()) player.setName(name) })
+
+                                        Button({ renameDialog.show() }, Modifier.width(teamPlayerWidth), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
                                             Text(player.getName(), color = textColor, fontSize = 28.sp)
                                         }
                                         if (team.getPlayersCount() > playersMinCount()) {
