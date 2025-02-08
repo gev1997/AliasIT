@@ -34,17 +34,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    fun getNavController(): NavController {
-        return mNavController
-    }
-
-    fun getTeamsViewModel(): TeamsViewModel {
-        return mTeamsViewModel
-    }
-
-    fun getTimeAndScoreViewModel(): TimeAndScoreViewModel {
-        return mTimeAndScoreViewModel
-    }
+    fun getNavController() = mNavController
+    fun getTeamsViewModel() = mTeamsViewModel
+    fun getTimeAndScoreViewModel() = mTimeAndScoreViewModel
 
     private lateinit var mNavController: NavController
     private lateinit var mTeamsViewModel: TeamsViewModel
