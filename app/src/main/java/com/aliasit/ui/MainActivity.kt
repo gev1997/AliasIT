@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
                 NavHost(mNavController.getNavHostController(), "Home") {
                     composable("Home") { HomePage() }
                     composable("Teams") { TeamsPage() }
+                    composable("TimeAndScore") { TimeAndScorePage() }
                     composable("Game") { GamePage() }
                     composable("Options") { OptionsPage() }
                 }
@@ -39,6 +40,10 @@ class MainActivity : ComponentActivity() {
 
     fun getTeamsViewModel(): TeamsViewModel {
         return mTeamsViewModel
+    }
+
+    fun getTimeAndScoreViewModel(): TimeAndScoreViewModel {
+        return mTimeAndScoreViewModel
     }
 
     private lateinit var mNavController: NavController

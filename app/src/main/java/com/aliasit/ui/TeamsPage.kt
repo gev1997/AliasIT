@@ -113,10 +113,10 @@ fun MainActivity.TeamsPage() {
 
                     Utility.Spacer(0, 2)
 
-                    // Play Column
+                    // Next Column
                     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                        Button(getNavController().getNavigator("Game"), Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
-                            Text("Let's Go", color = textColor, fontSize = 28.sp)
+                        Button(getNavController().getNavigator("TimeAndScore"), Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(buttonColor), shape = buttonShape) {
+                            Text("Next", color = textColor, fontSize = 28.sp)
                         }
 
                         Utility.Spacer(10)

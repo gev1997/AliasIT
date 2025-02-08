@@ -9,6 +9,7 @@ class NavController(private val mNavHostController: NavHostController) {
         when (route) {
             "Home" -> return { mNavHostController.navigate("Home") }
             "Teams" -> return { mNavHostController.navigate("Teams") }
+            "TimeAndScore" -> return { mNavHostController.navigate("TimeAndScore") }
             "Game" -> return { mNavHostController.navigate("Game") }
             "Options" -> return { mNavHostController.navigate("Options") }
         }
