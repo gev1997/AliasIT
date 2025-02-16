@@ -35,19 +35,40 @@ class Team(private val teamIndex: Int) {
             mPlayersList.removeAt(index)
     }
 
+    fun getCurrentPlayer(): Player {
+        return getPlayer(mCurrentIndex)
+    }
+
+    fun getNextCurrentPlayer(): Player {
+        val nextCurrentIndex = calculateNextCurrentPlayerIndex()
+
+        return getPlayer(nextCurrentIndex)
+    }
+
+    fun switchToNextCurrentPlayer() {
+        mCurrentIndex = calculateNextCurrentPlayerIndex()
+    }
+
     fun getScore() = mScore
 
-    fun addScore() { ++mScore }
+    fun addScore(score: Int) {
+        assert(score >= 0)
 
-    fun removeScore() {
-        assert(mScore > 0)
-
-        --mScore
+        mScore += score
     }
 
     fun dropScore() { mScore = 0 }
 
+    private fun calculateNextCurrentPlayerIndex(): Int {
+        assert(mCurrentIndex < getPlayersCount())
+        val nextCurrentIndex = if (mCurrentIndex == getPlayersCount() - 1) { 0 } else { mCurrentIndex + 1 }
+        assert(nextCurrentIndex < getPlayersCount())
+
+        return nextCurrentIndex
+    }
+
     private var mName by mutableStateOf("Team $teamIndex")
     private val mPlayersList = mutableStateListOf(Player(1), Player(2))
     private var mScore by mutableIntStateOf(0)
+    private var mCurrentIndex by mutableIntStateOf(0)
 }
