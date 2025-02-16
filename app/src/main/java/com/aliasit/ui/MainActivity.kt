@@ -28,6 +28,8 @@ class MainActivity : ComponentActivity() {
                     composable("Teams") { TeamsPage() }
                     composable("TimeAndScore") { TimeAndScorePage() }
                     composable("Game") { GamePage() }
+                    composable("GameState") { GameStatePage() }
+                    composable("GameWin") { GameWinPage() }
                     composable("Options") { OptionsPage() }
                 }
             }

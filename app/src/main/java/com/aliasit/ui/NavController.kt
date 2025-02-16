@@ -11,6 +11,8 @@ class NavController(private val mNavHostController: NavHostController) {
             "Teams" -> return { mNavHostController.navigate("Teams") }
             "TimeAndScore" -> return { mNavHostController.navigate("TimeAndScore") }
             "Game" -> return { mNavHostController.navigate("Game") }
+            "GameState" -> return { mNavHostController.navigate("GameState") }
+            "GameWin" -> return { mNavHostController.navigate("GameWin") }
             "Options" -> return { mNavHostController.navigate("Options") }
         }
 
