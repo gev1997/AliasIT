@@ -24,13 +24,13 @@ class MainActivity : ComponentActivity() {
                 mNavController = NavController(rememberNavController())
 
                 NavHost(mNavController.getNavHostController(), "Home") {
-                    composable("Home") { HomePage() }
-                    composable("Teams") { TeamsPage() }
+                    composable("Home")         { HomePage()         }
+                    composable("Teams")        { TeamsPage()        }
                     composable("TimeAndScore") { TimeAndScorePage() }
-                    composable("Game") { GamePage() }
-                    composable("GameState") { GameStatePage() }
-                    composable("GameWin") { GameWinPage() }
-                    composable("Options") { OptionsPage() }
+                    composable("Game")         { GamePage()         }
+                    composable("GameState")    { GameStatePage()    }
+                    composable("GameWin")      { GameWinPage()      }
+                    composable("Options")      { OptionsPage()      }
                 }
             }
         }
