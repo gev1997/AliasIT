@@ -8,6 +8,10 @@ import kotlinx.coroutines.flow.asStateFlow
 class TeamsViewModel : ViewModel() {
     fun getStateFlow() = mStateFlow
 
+    fun reset() {
+        mMutableStateFlow.value = Teams()
+    }
+
     private val mMutableStateFlow = MutableStateFlow(Teams())
     private val mStateFlow = mMutableStateFlow.asStateFlow()
 }
