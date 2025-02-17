@@ -9,30 +9,52 @@ class NavController(private val mNavHostController: NavHostController) {
         when (route) {
             "Home" ->
                 return {
-                    mNavHostController.navigate("Home")
+                    mNavHostController.navigate("Home") {
+                        launchSingleTop = true
+                        popUpTo(0)
+                    }
                 }
             "Teams" ->
                 return {
-                    mNavHostController.navigate("Teams")
+                    mNavHostController.navigate("Teams") {
+                        launchSingleTop = true
+                        popUpTo("Teams")
+                    }
                 }
             "TimeAndScore" ->
                 return {
-                    mNavHostController.navigate("TimeAndScore") }
+                    mNavHostController.navigate("TimeAndScore") {
+                        launchSingleTop = true
+                        popUpTo("TimeAndScore")
+                    }
+                }
             "Game" ->
                 return {
-                    mNavHostController.navigate("Game")
+                    mNavHostController.navigate("Game") {
+                        launchSingleTop = true
+                        popUpTo("Game")
+                    }
                 }
             "GameState" ->
                 return {
-                    mNavHostController.navigate("GameState")
+                    mNavHostController.navigate("GameState") {
+                        launchSingleTop = true
+                        popUpTo("GameState")
+                    }
                 }
             "GameWin" ->
                 return {
-                    mNavHostController.navigate("GameWin")
+                    mNavHostController.navigate("GameWin") {
+                        launchSingleTop = true
+                        popUpTo("GameWin")
+                    }
                 }
             "Options" ->
                 return {
-                    mNavHostController.navigate("Options")
+                    mNavHostController.navigate("Options") {
+                        launchSingleTop = true
+                        popUpTo("Options")
+                    }
                 }
         }
 
