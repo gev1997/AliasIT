@@ -44,3 +44,9 @@ class MainActivity : ComponentActivity() {
     private lateinit var mTeamsViewModel: TeamsViewModel
     private lateinit var mTimeAndScoreViewModel: TimeAndScoreViewModel
 }
+
+fun MainActivity.backToHomeHandler() {
+    getNavController().getNavigator("Home")()
+    getTeamsViewModel().reset()
+    getTimeAndScoreViewModel().reset()
+}
