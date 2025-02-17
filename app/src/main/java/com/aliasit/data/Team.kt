@@ -39,12 +39,6 @@ class Team(private val teamIndex: Int) {
         return getPlayer(mCurrentIndex)
     }
 
-    fun getNextCurrentPlayer(): Player {
-        val nextCurrentIndex = calculateNextCurrentPlayerIndex()
-
-        return getPlayer(nextCurrentIndex)
-    }
-
     fun switchToNextCurrentPlayer() {
         mCurrentIndex = calculateNextCurrentPlayerIndex()
     }
@@ -56,8 +50,6 @@ class Team(private val teamIndex: Int) {
 
         mScore += score
     }
-
-    fun dropScore() { mScore = 0 }
 
     private fun calculateNextCurrentPlayerIndex(): Int {
         assert(mCurrentIndex < getPlayersCount())
